@@ -121,6 +121,9 @@ void Folder::checkLocalPath()
 {
     const QFileInfo fi(_definition.localPath);
     _canonicalLocalPath = fi.canonicalFilePath();
+#ifdef Q_OS_MAC
+    _canonicalLocalPath = _canonicalLocalPath.normalized(QString::NormalizationForm_C);
+#endif
     if (_canonicalLocalPath.isEmpty()) {
         qCWarning(lcFolder) << "Broken symlink:" << _definition.localPath;
         _canonicalLocalPath = _definition.localPath;
