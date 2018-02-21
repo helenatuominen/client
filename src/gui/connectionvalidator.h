@@ -109,7 +109,7 @@ public slots:
     void checkAuthentication();
 
 signals:
-    void connectionResult(ConnectionValidator::Status status, QStringList errors);
+    void connectionResult(ConnectionValidator::Status status, const QStringList &errors);
 
 protected slots:
     void slotCheckServerAndAuth();
